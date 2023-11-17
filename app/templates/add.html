@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Module 4 Forms</title>
+  </head>
+  <body>
+    <form action="{% url "add" %}" method="GET">
+       {{ form.as_p }}
+
+        <button>Add</button>
+    </form>
+
+    {% if answer is not None %}
+        <p>{{ x }} + {{ y }} = {{ answer }}</p>
+    {% endif %}
+  </body>
+</html>
