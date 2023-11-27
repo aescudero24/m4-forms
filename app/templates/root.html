@@ -7,29 +7,14 @@
     <title>Module 4 Forms</title>
   </head>
   <body>
-    <form action="">
-      <p>Hello From Inside The Form</p>
-
-      <label>
-        <p>Email:</p>
-        <input type="email" name="email" />
-      </label>
-
-      <label>
-        <p>Password:</p>
-        <input type="password" name="password" />
-      </label>
-
-      <label>
-        <p>Repeat Password:</p>
-        <input
-          type="password"
-          name="repeated
-        -password"
-        />
-      </label>
+    <form action="" method="POST">
+      {% csrf_token %} {{ form.as_p }}
 
       <button>Sign Up!</button>
     </form>
+
+    {% if signup_success %}
+    <p>Sign Up Success!</p>
+    {% endif %}
   </body>
 </html>

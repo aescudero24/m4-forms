@@ -1,14 +1,21 @@
 from django.shortcuts import render
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
-from app.forms import AddForm
+from app.forms import AddForm, SignUpForm
 
 # Create your views here.
 
 
 def root_view(request: HttpRequest) -> HttpResponse:
-    print(request.GET)
-    return render(request, "root.html")
+    context = {}
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            context["signup_success"] = True
+    else:
+        form = SignUpForm()
+    context["form"] = form
+    return render(request, "root.html", context)
 
 
 def add_view(request):

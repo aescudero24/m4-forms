@@ -20,7 +20,7 @@ from app.views import hey_view, age_view, order_view
 
 urlpatterns = [
     path("hey/", hey_view, name="hey"),
-    path("age_in/", age_view, name="age"),
+    path("age-in/", age_view, name="age"),
     path("order-total/", order_view, name="order"),
     path("admin/", admin.site.urls),
 ]
