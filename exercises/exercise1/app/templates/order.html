@@ -1,0 +1,12 @@
+{% extends "root.html" %}
+{% block content %}
+    <form action="{% url "order" %}" method="GET">
+        {% csrf_token %} {{ form.as_p }}
+
+        <button>Enter</button>
+    </form>
+
+    {% if total is not None %}
+        <p>${{ total }}</p>
+    {% endif %}
+{% endblock content %}

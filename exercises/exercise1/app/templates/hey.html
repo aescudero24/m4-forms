@@ -1,0 +1,13 @@
+{% extends "root.html" %}
+{% block content %}
+    <form action="{% url "hey" %}" method="POST">
+        {% csrf_token %} {{ form.as_p }}
+
+        <button>Enter</button>
+    </form>
+
+    {% if name is not None %}
+        <p>Hey, {{ name }}!</p>
+    {% endif %}
+{% endblock content %}
+

@@ -1,0 +1,12 @@
+{% extends "root.html" %}
+{% block content %}
+    <form action="{% url "age" %}" method="GET">
+        {% csrf_token %} {{ form.as_p }}
+
+        <button>Enter</button>
+    </form>
+
+    {% if answer is not None %}
+    <p>{{ answer }}</p>
+    {% endif %}
+{% endblock content %}
