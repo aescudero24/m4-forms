@@ -1,0 +1,11 @@
+{% extends "root.html" %}
+{% block content %}
+    <form action="{% url "front" %}">
+        {% csrf_token %} {{ form.as_p }}
+
+        <button>Enter</button>
+    </form>
+    {% if result is not None %}
+        <p>{{ result }}</p>
+    {% endif %}
+{% endblock content %}

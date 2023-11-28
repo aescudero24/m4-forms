@@ -6,6 +6,10 @@ from app.forms import HeyForm, AgeForm, OrderForm
 
 
 # Create your views here.
+def home_view(request: HttpRequest) -> HttpResponse:
+    return render(request, "home.html")
+
+
 def hey_view(request: HttpRequest) -> HttpResponse:
     form = HeyForm(request.POST)
     if form.is_valid():

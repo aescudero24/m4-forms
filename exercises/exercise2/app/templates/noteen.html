@@ -1,0 +1,11 @@
+{% extends "root.html" %}
+{% block content %}
+    <form action="{% url "noteen" %}">
+        {% csrf_token %} {{ form.as_p }}
+
+        <button>Enter</button>
+    </form>
+    {% if sum is not None %}
+        <p>{{ sum }}</p>
+    {% endif %}
+{% endblock content %}
