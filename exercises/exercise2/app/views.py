@@ -53,13 +53,15 @@ def xyz_there_view(request: HttpRequest) -> HttpResponse:
 
 
 def centered_average_view(request: HttpRequest) -> HttpResponse:
-    def centered_average(numbers):
-        return (sum(numbers) - min(numbers) - max(numbers)) / (len(numbers) - 2)
-
     form = CenteredAverageForm(request.GET)
     if form.is_valid():
-        numbers = form.cleaned_data["numbers"]
-        result = format(centered_average(numbers), ".0f")
+        nums = form.cleaned_data.values()
+        nums = [num for num in nums if num is not None]
+        if len(nums) < 3:
+            raise ValueError("At least 3 non-None numbers are required.")
+        nums.sort()
+        nums.pop(0)
+        nums.pop(-1)
+        result = sum(nums) // len(nums)
         return render(request, "centeravg.html", {"form": form, "result": result})
-    else:
-        return render(request, "centeravg.html", {"form": form})
+    return render(request, "centeravg.html", {"form": form})

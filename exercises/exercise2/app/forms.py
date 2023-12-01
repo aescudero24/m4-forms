@@ -17,21 +17,10 @@ class XyzThereForm(forms.Form):
 
 
 class CenteredAverageForm(forms.Form):
-    numbers = forms.CharField(
-        label="Enter numbers separated by commas:",
-        help_text="Example: 1, 2, 3, 4, 5",
-    )
-
-    def clean_numbers(self):
-        data = self.cleaned_data["numbers"]
-        try:
-            numbers = [float(num.strip()) for num in data.split(",")]
-        except ValueError:
-            raise forms.ValidationError(
-                "Invalid input. Please enter valid numbers separated by commas."
-            )
-
-        if len(numbers) < 3:
-            raise forms.ValidationError("List must have at least 3 elements.")
-
-        return numbers
+    a = forms.IntegerField()
+    b = forms.IntegerField()
+    c = forms.IntegerField()
+    d = forms.IntegerField(required=False)
+    e = forms.IntegerField(required=False)
+    f = forms.IntegerField(required=False)
+    g = forms.IntegerField(required=False)

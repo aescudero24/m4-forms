@@ -92,7 +92,7 @@ class TestXyzThereView(SimpleTestCase):
 class TestCenteredAverageView(SimpleTestCase):
     def test_1_2_3_4_100(self):
         url = "/list-2/centered-average/"
-        data = {"numbers": [1, 2, 3, 4, 100]}
+        data = {"a": 1, "b": 2, "c": 3, "d": 4, "e": 100}
 
         response = self.client.get(url, data)
 
@@ -101,7 +101,7 @@ class TestCenteredAverageView(SimpleTestCase):
 
     def test_1_1_5_5_10_8_7(self):
         url = "/list-2/centered-average/"
-        data = {"numbers": [1, 1, 5, 5, 10, 8, 7]}
+        data = {"a": 1, "b": 1, "c": 5, "d": 5, "e": 10, "f": 8, "g": 7}
 
         response = self.client.get(url, data)
 
@@ -110,9 +110,9 @@ class TestCenteredAverageView(SimpleTestCase):
 
     def test__10__4__2__4__2_0(self):
         url = "/list-2/centered-average/"
-        data = {"numbers": [-10, -4, -2, -4, -2, 0]}
+        data = {"a": -10, "b": -4, "c": -2, "d": -4, "e": -2, "f": 0}
 
         response = self.client.get(url, data)
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "3")
+        self.assertContains(response, "-3")
